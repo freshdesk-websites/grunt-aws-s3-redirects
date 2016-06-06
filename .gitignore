@@ -3,3 +3,4 @@ npm-debug.log
 tmp
 aws.json
 .DS_Store
+.jshintrc
