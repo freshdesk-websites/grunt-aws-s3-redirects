@@ -1,0 +1,42 @@
+{
+  "name": "aws-s3-redirects",
+  "description": "Manage static site redirects on AWS S3.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/manoj/sandbox",
+  "author": {
+    "name": "Manoj Krishnan",
+    "email": "manoj.k@freshdesk.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/manoj/sandbox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/manoj/sandbox/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/manoj/sandbox/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "dependencies": {
+    "grunt": "^0.4.0",
+    "grunt-aws-s3": "^0.14.5"
+  }
+}
