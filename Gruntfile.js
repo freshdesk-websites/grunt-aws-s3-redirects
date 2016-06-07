@@ -30,7 +30,8 @@ module.exports = function(grunt) {
       set_redirects: {
         options: {
           files_root: "",
-          redirects_json_path: ""
+          redirects_json_path: "",
+          sync_task_name: "",
         }
       }
     },

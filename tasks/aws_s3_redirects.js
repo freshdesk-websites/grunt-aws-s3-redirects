@@ -17,7 +17,7 @@ module.exports = function(grunt) {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options();
 
-    var input_json = grunt.file.readJSON(options.redirects_json_path + 'redirects.json');
+    var input_json = grunt.file.readJSON(options.redirects_json_path);
     var files_sync_config = [];
     var files_cleanup_config = [];
 
@@ -36,15 +36,8 @@ module.exports = function(grunt) {
       }
     }
 
-    files_cleanup_config.push({
-      action: 'delete',
-      cwd: options.files_root,
-      dest: '/'
-    });
-
-    grunt.config.set('aws_s3.files_sync.files', files_sync_config);
-    grunt.config.set('aws_s3.files_cleanup.files', files_cleanup_config);
-    grunt.task.run(['aws_s3:files_sync', 'aws_s3:files_cleanup']);
+    grunt.config.set('aws_s3.' + options.sync_task_name + '.files', files_sync_config);
+    grunt.task.run(['aws_s3:' + options.sync_task_name]);
   });
 
 };
