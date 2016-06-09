@@ -29,14 +29,18 @@ module.exports = function(grunt) {
         if(input_json[key].substr(-1,1) != "/") {
           input_json[key] = input_json[key] + "/";
         }
+        var src_key = key;
+        if(key.substr(-1,1) != "/") {
+          src_key = key + "/";
+        }
         files_sync_config.push({
           action: 'upload',
           expand: true,
           cwd: options.files_root,
-          src: key + 'index.html',
+          src: src_key + 'index.html',
           dest: '',
           params: {
-            WebsiteRedirectLocation: ('/' + input_json[key])
+            WebsiteRedirectLocation: (input_json[key])
           }
         });
       }
