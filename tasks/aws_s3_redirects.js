@@ -23,22 +23,17 @@ module.exports = function(grunt) {
 
     for(var key in input_json) {
       if(input_json.hasOwnProperty(key)) {
-        if(input_json[key].substr(0,1) != "/") {
-          input_json[key] = "/" + input_json[key];
-        }
-        if(input_json[key].substr(-1,1) != "/") {
-          input_json[key] = input_json[key] + "/";
-        }
-        var src_key = key;
-        if(key.substr(-1,1) != "/") {
-          src_key = key + "/";
-        }
+        var regex = /\/\//g;
+        var dest_path = ('/' + key + '/').replace(regex, '/');
+        var source_path = (options.files_root + '/' + key + '/').replace(regex, '/');
+        input_json[key] = ('/' + input_json[key] + '/').replace(regex, '/');
+
         files_sync_config.push({
           action: 'upload',
           expand: true,
-          cwd: options.files_root,
-          src: src_key + 'index.html',
-          dest: '',
+          cwd: source_path,
+          src: ['index.html'],
+          dest: dest_path,
           params: {
             WebsiteRedirectLocation: (input_json[key])
           }
